@@ -1,7 +1,25 @@
-import Head from 'next/head' 
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const abortController = new AbortController();
+  const [pokemon, setPokemon] = useState([]);
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    fetch("https://pokeapi.co/api/v2/pokemon/1", {
+      signal: abortController.signal,
+    })
+      .then((response) => response.json())
+      .then((data) => setPokemon(data))
+      .catch((error) => console.log(error.message));
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -10,10 +28,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}> 
-        hey
+      <main className={styles.main}>
+        <div className="container"> 
+          <img src={pokemon.sprites.front_default} />
+        </div>
       </main>
- 
     </div>
-  )
+  );
 }

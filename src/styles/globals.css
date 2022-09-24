@@ -24,3 +24,9 @@ a {
     background: black;
   }
 }
+
+
+.container {
+  background-color: blue;
+  width: 75%; 
+}
