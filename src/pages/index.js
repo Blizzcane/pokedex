@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const abortController = new AbortController();
   const [pokemon, setPokemon] = useState([]);
+  
   useEffect(() => {
     const abortController = new AbortController();
 
-    fetch("https://pokeapi.co/api/v2/pokemon/1", {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1154", {
       signal: abortController.signal,
     })
       .then((response) => response.json())
-      .then((data) => setPokemon(data))
+      .then((data) => setPokemon(data.results))
       .catch((error) => console.log(error.message));
+
+    console.log(pokemon);
 
     return () => {
       abortController.abort();
@@ -29,8 +31,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className="container"> 
-          <img src={pokemon.sprites.front_default} />
+        <div className="container">
+          <ul>
+            {pokemon.map((pokemon) => (
+              <p>{pokemon.name}</p>
+            ))}
+          </ul>
         </div>
       </main>
     </div>
