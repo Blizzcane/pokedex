@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -14,14 +14,15 @@ export default function Home() {
       .then((response) => response.json())
       .then((data) => setPokemon(data))
       .catch((error) => console.log(error.message));
-    console.log(pokemon)
 
     return () => {
       abortController.abort();
     };
   }, []);
 
-  const imgSource = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png";
+  const imgSource =
+    pokemon === null ? "" : pokemon.sprites.other.home.front_default;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,13 +36,14 @@ export default function Home() {
           className="container"
           style={{
             display: "flex",
-            flexDirection: "column", 
+            flexDirection: "column",
             alignItems: "center",
           }}
         >
           <img src={imgSource} className="hero-image" width="30%" />
-          <div className="info"><p>dsfasfsa</p></div>
-
+          <div className="info">
+            <p>{pokemon?.name}</p>
+          </div>
         </div>
       </main>
     </div>
