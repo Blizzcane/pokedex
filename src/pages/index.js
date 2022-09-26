@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import Pokedex from "../modules/pokedex/Pokedex"
 
 export default function Home() {
   const [pokemon, setPokemon] = useState(null);
@@ -32,19 +33,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <img src={imgSource} className="hero-image" width="30%" />
-          <div className="info">
-            <p>{pokemon?.name}</p>
-          </div>
-        </div>
+        <Pokedex pokemon={pokemon} imgSource={imgSource} />
       </main>
     </div>
   );
