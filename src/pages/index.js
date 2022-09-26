@@ -4,24 +4,24 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);
-  
+
   useEffect(() => {
     const abortController = new AbortController();
 
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=1154", {
+    fetch("https://pokeapi.co/api/v2/pokemon/ditto", {
       signal: abortController.signal,
     })
       .then((response) => response.json())
-      .then((data) => setPokemon(data.results))
+      .then((data) => setPokemon(data))
       .catch((error) => console.log(error.message));
-
-    console.log(pokemon);
+    console.log(pokemon)
 
     return () => {
       abortController.abort();
     };
   }, []);
 
+  const imgSource = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png";
   return (
     <div className={styles.container}>
       <Head>
@@ -31,12 +31,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className="container">
-          <ul>
-            {pokemon.map((pokemon) => (
-              <p>{pokemon.name}</p>
-            ))}
-          </ul>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            flexDirection: "column", 
+            alignItems: "center",
+          }}
+        >
+          <img src={imgSource} className="hero-image" width="30%" />
+          <div className="info"><p>dsfasfsa</p></div>
+
         </div>
       </main>
     </div>

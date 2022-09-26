@@ -27,6 +27,17 @@ a {
 
 
 .container {
-  background-color: blue;
   width: 75%; 
+}
+
+.hero-image{ 
+transform: translate(0px,30px);
+}
+
+.info{ 
+  width: 75%;  
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 20px;
 }
