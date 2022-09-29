@@ -1,29 +1,24 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Pokedex from "../modules/pokedex/Pokedex";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState(null);
+  const [pokemon, setPokemon] = useState(["sdfa", "sdfa"]);
+  const [currentPageUrl, setCurrentPageUrl] = useState(
+    "https://pokeapi.co/api/v2/pokemon"
+  );
 
   useEffect(() => {
-    const abortController = new AbortController();
+    let cancel;
+    axios
+      .get(currentPageUrl, {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
+      .then((res) => setPokemon(res.data.results));
 
-    fetch("https://pokeapi.co/api/v2/pokemon/ditto", {
-      signal: abortController.signal,
-    })
-      .then((response) => response.json())
-      .then((data) => setPokemon(data))
-      .catch((error) => console.log(error.message));
-
-    return () => {
-      abortController.abort();
-    };
-  }, []);
-
-  const imgSource =
-    pokemon === null ? "" : pokemon.sprites.other.home.front_default;
+    return () => cancel();
+  }, [currentPageUrl]);
 
   return (
     <div>
@@ -36,7 +31,7 @@ export default function Home() {
       <main>
         <ul>
           {pokemon.map((pokemon) => (
-            <li>{pokemon.name}</li>
+            <li key={pokemon.url}>{pokemon.name}</li>
           ))}
         </ul>
       </main>
