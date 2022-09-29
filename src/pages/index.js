@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PokemonList from "../common/components/PokemonList";
+import Pagination from "../common/components/Pagination";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState(["sdfa", "sdfa"]);
@@ -46,8 +47,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <PokemonList
-          pokemon={pokemon}
+        <PokemonList pokemon={pokemon} />
+        <Pagination
           goToNextPage={nextPageUrl ? goToNextPage : null}
           goToPrevPage={prevPageUrl ? goToPrevPage : null}
         />
