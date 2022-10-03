@@ -6,7 +6,7 @@ import PokemonList from "../common/components/PokemonList";
 import Pagination from "../common/components/Pagination";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState(["sdfa", "sdfa"]);
+  const [pokemon, setPokemon] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon"
   );
@@ -24,14 +24,13 @@ export default function Home() {
       .then((res) => {
         setNextPageUrl(res.data.next);
         setPrevPageUrl(res.data.previous);
-        setPokemon(res.data.results);
-        res.data.results.map(
-          async (x) =>
-            await fetch(x.url)
-              .then((res) => res.json())
-              .then((res) => console.log(res))
-        );
+        Promise.all(
+          res.data.results.map(
+            async (x) => await fetch(x.url).then((res) => res.json())
+          )
+        ).then((res) => setPokemon(res));
       });
+
     setLoading(false);
     return () => cancel();
   }, [currentPageUrl]);

@@ -1,14 +1,12 @@
 import React from "react";
+import PokemonCard from "./PokemonCard";
 
-const PokemonList = ({pokemon}) => {
+const PokemonList = ({ pokemon }) => {
   return (
     <>
-      <ul>
-        {pokemon.map((pokemon) => (
-          <li key={pokemon.url}>{pokemon.name}</li>
-        ))}
-      </ul>
-      
+      {pokemon.map((pokemon) => (
+        <PokemonCard pokemon={pokemon} />
+      ))}
     </>
   );
 };
