@@ -25,6 +25,12 @@ export default function Home() {
         setNextPageUrl(res.data.next);
         setPrevPageUrl(res.data.previous);
         setPokemon(res.data.results);
+        res.data.results.map(
+          async (x) =>
+            await fetch(x.url)
+              .then((res) => res.json())
+              .then((res) => console.log(res))
+        );
       });
     setLoading(false);
     return () => cancel();
