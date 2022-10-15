@@ -3,7 +3,7 @@ import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({ pokemon }) => {
   return (
-    <div style={{display: "flex", justifyContent:"center", flexDirection: "row", flexWrap: "wrap"}}>
+    <div className="layout">
       {pokemon.map((pokemon) => (
         <PokemonCard pokemon={pokemon} />
       ))}

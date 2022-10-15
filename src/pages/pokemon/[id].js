@@ -30,11 +30,8 @@ const PokemonDetails = () => {
 
   if (pokemon.name)
     return (
-      <div>
+      <div className="pokedex-layout">
         <PokeDexEntry pokemon={pokemon} />
-        <Link href="/">
-          <Button>Back</Button>
-        </Link>
       </div>
     );
 };

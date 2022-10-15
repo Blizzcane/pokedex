@@ -3,3 +3,28 @@ ul {
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */
 }
+
+.layout {
+  width: 100%;
+
+  display: flex; 
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+}
+.pokedex-layout {
+  width: 1366px;
+  height: 768px;
+
+  display: grid;
+  grid:
+    "sidebar body" 1fr
+    / 1fr 2fr;
+  gap: 8px;
+
+  justify-content: center;
+}
+
+.sidebar { grid-area: sidebar; }
+.main-entry { grid-area: body; }

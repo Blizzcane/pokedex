@@ -11,18 +11,16 @@ const PokemonCard = ({ pokemon }) => {
           minWidth: "16rem",
           margin: "10px",
           flexBasis: "auto",
-          cursor: "pointer", 
+          cursor: "pointer",
         }}
       >
         <Card.Img
-          style={{ transform: "translate(0px, 20px)" }}
+          style={{ transform: "translate(0px, 20px)", }}
           variant="top"
           src={pokemon.sprites.other.home.front_default}
         />
         <Card.Body>
-          <Card.Text
-            className="text-center fw-bold" 
-          >
+          <Card.Text className="text-center fw-bold">
             {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
           </Card.Text>
         </Card.Body>
