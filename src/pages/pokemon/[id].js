@@ -10,6 +10,7 @@ const PokemonDetails = () => {
   const { id } = router.query;
   const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(true);
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     let cancel;
@@ -21,6 +22,13 @@ const PokemonDetails = () => {
       .then((res) => {
         setPokemon(res.data);
       });
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon-species/${id}`, {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
+        .then((res) => { 
+        setDescription(res.data.flavor_text_entries.find(entry => entry.language.name === "en").flavor_text);
+      });
 
     setLoading(false);
     return () => cancel();
@@ -31,7 +39,7 @@ const PokemonDetails = () => {
   if (pokemon.name)
     return (
       <div>
-        <PokeDexEntry pokemon={pokemon} />
+        <PokeDexEntry pokemon={pokemon} description={description} />
       </div>
     );
 };

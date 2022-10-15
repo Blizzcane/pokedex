@@ -3,8 +3,7 @@ import { Button, Card, ListGroup, Badge } from "react-bootstrap";
 import Link from "next/link";
 import StatsList from "./StatsList";
 
-const PokeDexEntry = ({ pokemon }) => {
-
+const PokeDexEntry = ({ pokemon, description }) => {
   return (
     <div className="pokedex-layout">
       <div className="sidebar">
@@ -26,6 +25,7 @@ const PokeDexEntry = ({ pokemon }) => {
         <Card>
           <Card.Body>
             <StatsList stats={pokemon.stats} />
+            {description.replaceAll('\f', ' ')}
           </Card.Body>
         </Card>
       </div>
