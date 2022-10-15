@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 import axios from "axios";
+import PokeDexEntry from "../../common/components/PokeDexEntry";
 import Link from "next/link";
 
 const PokemonDetails = () => {
@@ -23,22 +24,18 @@ const PokemonDetails = () => {
 
     setLoading(false);
     return () => cancel();
-  }, [id]);
+  }, []);
 
   if (loading) return "Loading...";
 
   if (pokemon.name)
     return (
-      <Card style={{ width: "20rem" }}>
-        <Card.Title>
-          <h1>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h1>
-        </Card.Title>
-
-        <img src={pokemon.sprites.other.home.front_default} />
+      <div>
+        <PokeDexEntry pokemon={pokemon} />
         <Link href="/">
           <Button>Back</Button>
         </Link>
-      </Card>
+      </div>
     );
 };
 
