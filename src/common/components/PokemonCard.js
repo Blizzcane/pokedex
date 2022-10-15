@@ -21,7 +21,7 @@ const PokemonCard = ({ pokemon }) => {
       <Card.Body>
         <Card.Text className="text-center fw-bold">
           {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
-        </Card.Text>        <Link href="/pokemon/1">
+        </Card.Text>        <Link href={`/pokemon/${pokemon.id}`}>
 
         <Button>Hey</Button></Link>
       </Card.Body>
