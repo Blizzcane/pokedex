@@ -53,7 +53,6 @@ export default function Home() {
 
       <main>
         <a id="top"></a>
-
         <PokemonList pokemon={pokemon} />
         <Pagination
           goToNextPage={nextPageUrl ? goToNextPage : null}

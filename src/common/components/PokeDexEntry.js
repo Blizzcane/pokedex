@@ -1,8 +1,10 @@
-import Link from "next/link";
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, ListGroup, Badge } from "react-bootstrap";
+import Link from "next/link";
+import StatsList from "./StatsList";
 
 const PokeDexEntry = ({ pokemon }) => {
+
   return (
     <div className="pokedex-layout">
       <div className="sidebar">
@@ -23,18 +25,7 @@ const PokeDexEntry = ({ pokemon }) => {
       <div className="details">
         <Card>
           <Card.Body>
-            <ul>
-              <li>#{pokemon.id}</li>
-              <li>Height: {pokemon.height}</li>
-              <li>Weight: {pokemon.weight}</li>
-              {pokemon.stats &&
-                pokemon.stats.map((stat) => (
-                  <li>{`${
-                    stat.stat.name[0].toUpperCase() +
-                    stat.stat.name.substring(1)
-                  }: ${stat.base_stat}`}</li>
-                ))}
-            </ul>
+            <StatsList stats={pokemon.stats} />
           </Card.Body>
         </Card>
       </div>
