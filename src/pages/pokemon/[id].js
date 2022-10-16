@@ -35,7 +35,7 @@ const PokemonDetails = () => {
 
     setLoading(false);
     return () => cancel();
-  }, []);
+  }, [id]);
 
   if (loading) return "Loading...";
 

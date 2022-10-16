@@ -15,6 +15,7 @@ const StatsList = ({ stats }) => {
       {stats &&
         stats.map((stat, idx) => (
           <ListGroup.Item
+            key={stat.base_stat}
             as="li"
             className="d-flex justify-content-between align-items-start"
           >
