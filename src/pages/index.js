@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import PokemonList from "../common/components/PokemonList";
 import Pagination from "../common/components/Pagination";
 
@@ -14,7 +13,7 @@ export default function Home() {
   const [prevPageUrl, setPrevPageUrl] = useState();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => { 
     let cancel;
     setLoading(true);
     axios
