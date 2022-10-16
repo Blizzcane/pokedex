@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/router";
 import axios from "axios";
-import Pokedex from "../../modules/pokedex/Pokedex"; 
+import Pokedex from "../../modules/pokedex/pokedex";//testing build
 
 const PokemonDetails = () => {
   const router = useRouter();
