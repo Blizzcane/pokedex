@@ -62,3 +62,22 @@ export default function Home() {
     </div>
   );
 }
+
+export async function getServerSideProps() {
+  const res = await axios.get(currentPageUrl);
+  const pokemon = await Promise.all(
+    res.data.results.map(
+      async (x) => await fetch(x.url).then((res) => res.json())
+    )
+  );
+  const prevPageUrl = await res.data.previous;
+  const nextPageUrl = await res.data.next;
+  return {
+    props: {
+      pokemon,
+      currentPageUrl,
+      nextPageUrl,
+      prevPageUrl,
+    },
+  };
+}

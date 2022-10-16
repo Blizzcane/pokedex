@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useHovering } from "use-hovering";
 import { Button, Card, ListGroup, Badge } from "react-bootstrap";
 import Link from "next/link";
 import StatsList from "./StatsList";
 
 const PokeDexEntry = ({ pokemon, description }) => {
+  const ref = useRef();
+  const isHovering = useHovering(ref);
+
   return (
     <div className="pokedex-layout">
       <div className="sidebar">
@@ -17,7 +21,9 @@ const PokeDexEntry = ({ pokemon, description }) => {
           </Card.Title>
 
           <Link href="/">
-            <Button>Back</Button>
+            <Button className={isHovering ? "shadow" : ""} ref={ref}>
+              Back
+            </Button>
           </Link>
         </Card>
       </div>
@@ -25,7 +31,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
         <Card>
           <Card.Body>
             <StatsList stats={pokemon.stats} />
-            {description.replaceAll('\f', ' ')}
+            {description.replaceAll("\f", " ")}
           </Card.Body>
         </Card>
       </div>

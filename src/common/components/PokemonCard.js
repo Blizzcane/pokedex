@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useHovering } from "use-hovering";
 import { Button, Card } from "react-bootstrap";
 import Link from "next/link";
 
 const PokemonCard = ({ pokemon }) => {
+  const ref = useRef();
+  const isHovering = useHovering(ref);
+
   return (
     <Link href={`/pokemon/${pokemon.id}`}>
       <Card
+        ref={ref}
+        className={isHovering ? "shadow" : "shadow-sm"}
         style={{
           width: "16rem",
           minWidth: "16rem",
@@ -15,7 +21,7 @@ const PokemonCard = ({ pokemon }) => {
         }}
       >
         <Card.Img
-          style={{ transform: "translate(0px, 20px)", }}
+          style={{ transform: "translate(0px, 20px)" }}
           variant="top"
           src={pokemon.sprites.other.home.front_default}
         />
