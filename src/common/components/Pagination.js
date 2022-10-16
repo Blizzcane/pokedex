@@ -1,17 +1,18 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const Pagination = ({ goToNextPage, goToPrevPage }) => {
   return (
     <>
       {goToPrevPage && (
-        <button onClick={goToPrevPage}> 
-          <a href="#top" style={{textDecoration: "none"}}>Previous</a>
-        </button>
+        <Button onClick={goToPrevPage} style={{ marginRight:"5px"}}> 
+          <a href="#top" style={{textDecoration: "none", color:"white"}}>Prev</a>
+        </Button>
       )}
       {goToNextPage && (
-        <button onClick={goToNextPage}>
-          <a href="#top" style={{textDecoration: "none"}}>Next</a>
-        </button>
+        <Button onClick={goToNextPage}>
+          <a href="#top" style={{textDecoration: "none", color:"white"}}>Next</a>
+        </Button>
       )}
     </>
   );

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/router";
 import axios from "axios";
-import PokeDexEntry from "../../common/components/PokeDexEntry";
-import Link from "next/link";
+import Pokedex from "../../modules/pokedex/Pokedex"; 
 
 const PokemonDetails = () => {
   const router = useRouter();
@@ -22,12 +20,17 @@ const PokemonDetails = () => {
       .then((res) => {
         setPokemon(res.data);
       });
+    //   gets the descriptions and finds the English version
     axios
       .get(`https://pokeapi.co/api/v2/pokemon-species/${id}`, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
-        .then((res) => { 
-        setDescription(res.data.flavor_text_entries.find(entry => entry.language.name === "en").flavor_text);
+      .then((res) => {
+        setDescription(
+          res.data.flavor_text_entries.find(
+            (entry) => entry.language.name === "en"
+          ).flavor_text
+        );
       });
 
     setLoading(false);
@@ -39,7 +42,7 @@ const PokemonDetails = () => {
   if (pokemon.name)
     return (
       <div>
-        <PokeDexEntry pokemon={pokemon} description={description} />
+            <Pokedex  pokemon={pokemon} description={description} />  
       </div>
     );
 };

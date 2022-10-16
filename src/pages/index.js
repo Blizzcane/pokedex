@@ -51,7 +51,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="pokedex">
         <a id="top"></a>
         <PokemonList pokemon={pokemon} />
         <Pagination

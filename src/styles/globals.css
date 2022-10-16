@@ -22,5 +22,18 @@ ul {
     / 1fr 3fr;
   gap: 8px;
 }
-.sidebar { grid-area: sidebar; }
-.details { grid-area: details; }
+.sidebar {
+  grid-area: sidebar;
+}
+.details {
+  grid-area: details;
+}
+
+.pokedex {
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 13px rgb(255, 0, 0);
+  border-radius: 30px;
+  border: 13px solid rgb(255, 0, 0);
+  margin:auto
+}
