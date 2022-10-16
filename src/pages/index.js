@@ -64,7 +64,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps() {
-  const res = await axios.get(currentPageUrl);
+  const res = await axios.get("https://pokeapi.co/api/v2/pokemon");
   const pokemon = await Promise.all(
     res.data.results.map(
       async (x) => await fetch(x.url).then((res) => res.json())
@@ -74,8 +74,7 @@ export async function getServerSideProps() {
   const nextPageUrl = await res.data.next;
   return {
     props: {
-      pokemon,
-      currentPageUrl,
+      pokemon, 
       nextPageUrl,
       prevPageUrl,
     },
