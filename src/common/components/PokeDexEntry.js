@@ -16,7 +16,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
             variant="top"
             src={pokemon.sprites.other.home.front_default}
           />
-          <Card.Title>
+          <Card.Title className="text-center">
             <h1>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h1>
           </Card.Title>
 
@@ -31,7 +31,9 @@ const PokeDexEntry = ({ pokemon, description }) => {
         <Card>
           <Card.Body>
             <StatsList stats={pokemon.stats} />
-            {description.replaceAll("\f", " ")}
+            <div className="font-monospace">
+              {description.replaceAll("\f", " ")}
+            </div>
           </Card.Body>
         </Card>
       </div>

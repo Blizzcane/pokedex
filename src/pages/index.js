@@ -63,20 +63,20 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
-  const res = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  const pokemon = await Promise.all(
-    res.data.results.map(
-      async (x) => await fetch(x.url).then((res) => res.json())
-    )
-  );
-  const prevPageUrl = await res.data.previous;
-  const nextPageUrl = await res.data.next;
-  return {
-    props: {
-      pokemon, 
-      nextPageUrl,
-      prevPageUrl,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const res = await axios.get("https://pokeapi.co/api/v2/pokemon");
+//   const pokemon = await Promise.all(
+//     res.data.results.map(
+//       async (x) => await fetch(x.url).then((res) => res.json())
+//     )
+//   );
+//   const prevPageUrl = await res.data.previous;
+//   const nextPageUrl = await res.data.next;
+//   return {
+//     props: {
+//       pokemon, 
+//       nextPageUrl,
+//       prevPageUrl,
+//     },
+//   };
+// }
