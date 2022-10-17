@@ -2,15 +2,15 @@ import React, { useRef } from "react";
 import { useHovering } from "use-hovering";
 import { Button, Card, ListGroup, Badge } from "react-bootstrap";
 import Link from "next/link";
-import StatsList from "./StatsList";
+import StatsList from "./StatsList"; 
 
 const PokeDexEntry = ({ pokemon, description }) => {
   const ref = useRef();
-  const isHovering = useHovering(ref);
+  const isHovering = useHovering(ref);  
 
   return (
-    <div className="pokedex-layout">
-      <div className="sidebar">
+    <div className="flex-container">
+      <div className="item1">
         <Card>
           <Card.Img
             variant="top"
@@ -27,7 +27,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
           </Link>
         </Card>
       </div>
-      <div className="details">
+      <div className="item2">
         <Card>
           <Card.Body>
             <StatsList stats={pokemon.stats} />

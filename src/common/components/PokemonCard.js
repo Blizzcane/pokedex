@@ -13,9 +13,9 @@ const PokemonCard = ({ pokemon }) => {
         ref={ref}
         className={isHovering ? "shadow" : "shadow-sm"}
         style={{
-          width: "16rem",
-          minWidth: "16rem",
-          margin: "10px",
+          width: "14rem",
+          minWidth: "14rem",
+          margin: "8px",
           flexBasis: "auto",
           cursor: "pointer",
         }}
