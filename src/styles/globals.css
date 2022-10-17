@@ -69,8 +69,31 @@ ul {
   flex-shrink: 1;
 }
 
+.pokemon-image {
+  min-width: 200px;
+}
+
+.pokemon-card {
+  width: 8rem;
+  min-width: 8rem;
+  margin: 5px;
+  flex-basis: auto;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 600px) {
   .flex-container {
     flex-wrap: nowrap;
+  }
+  .pokemon-image {
+    min-width: 300px;
+  }
+
+  .pokemon-card {
+    width: 14rem;
+    min-width: 14rem;
+    margin: 8px;
+    flex-basis: auto;
+    cursor: pointer;
   }
 }

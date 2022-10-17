@@ -11,14 +11,9 @@ const PokemonCard = ({ pokemon }) => {
     <Link href={`/pokemon/${pokemon.id}`}>
       <Card
         ref={ref}
-        className={isHovering ? "shadow" : "shadow-sm"}
-        style={{
-          width: "14rem",
-          minWidth: "14rem",
-          margin: "8px",
-          flexBasis: "auto",
-          cursor: "pointer",
-        }}
+        className={
+          isHovering ? "shadow pokemon-card" : "shadow-sm pokemon-card"
+        }
       >
         <Card.Img
           style={{ transform: "translate(0px, 20px)" }}

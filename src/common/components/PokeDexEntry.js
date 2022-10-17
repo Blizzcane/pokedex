@@ -15,6 +15,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
           <Card.Img
             variant="top"
             src={pokemon.sprites.other.home.front_default}
+            className="pokemon-image"
           />
           <Card.Title className="text-center">
             <h1>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h1>
