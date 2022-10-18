@@ -40,13 +40,21 @@ const PokeDexEntry = ({ pokemon, description }) => {
             <div className="font-monospace">
               {description.replaceAll("\f", " ")}
             </div>
-            <div>
-              {pokemon.abilities.map((x) => (
-                <p>{x.ability.name}</p>
-              ))}
-              {pokemon.forms.map((form) => (
-                <p>{form.name}</p>
-              ))}
+            <div className="font-monospace">
+              <ul>
+                <li>{`Height: ${pokemon.height}`}</li>
+                <li>{`Weight: ${pokemon.weight}`}</li>
+                <li>
+                  Abilties:{" "}
+                  {pokemon.abilities.map((x) => (
+                    <span>
+                      {x.ability.name[0].toUpperCase() +
+                        x.ability.name.substring(1) +
+                        " "}
+                    </span>
+                  ))}
+                </li>
+              </ul>
             </div>
           </Card.Body>
         </Card>
