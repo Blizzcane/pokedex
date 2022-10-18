@@ -48,9 +48,8 @@ const PokeDexEntry = ({ pokemon, description }) => {
                   Abilties:{" "}
                   {pokemon.abilities.map((x) => (
                     <span>
-                      {x.ability.name[0].toUpperCase() +
-                        x.ability.name.substring(1) +
-                        " "}
+                      {`${x.ability.name[0].toUpperCase() +
+                      x.ability.name.substring(1)} `}
                     </span>
                   ))}
                 </li>

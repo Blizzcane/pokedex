@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
 import axios from "axios";
 import PokemonList from "../common/components/PokemonList";
 import Pagination from "../common/components/Pagination";
@@ -13,7 +13,7 @@ export default function Home() {
   const [prevPageUrl, setPrevPageUrl] = useState();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => { 
+  useEffect(() => {
     let cancel;
     setLoading(true);
     axios
@@ -73,7 +73,7 @@ export default function Home() {
 //   const nextPageUrl = await res.data.next;
 //   return {
 //     props: {
-//       pokemon, 
+//       pokemon,
 //       nextPageUrl,
 //       prevPageUrl,
 //     },
