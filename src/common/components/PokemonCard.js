@@ -24,7 +24,7 @@ const PokemonCard = ({ pokemon }) => {
         <Card.Img
           style={{ transform: "translate(0px, 20px)" }}
           variant="top"
-          src={pokemonArtwork.home}
+          src={isHovering ? pokemonArtwork.official : pokemonArtwork.home}
         />
         <Card.Body>
           <Card.Text className="text-center fw-bold">
