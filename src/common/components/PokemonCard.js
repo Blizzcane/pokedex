@@ -7,6 +7,12 @@ const PokemonCard = ({ pokemon }) => {
   const ref = useRef();
   const isHovering = useHovering(ref);
 
+  const pokemonArtwork = {
+    home: pokemon.sprites.other.home.front_default,
+    official: pokemon.sprites.other["official-artwork"].front_default,
+    dreamWorld: pokemon.sprites.other.dream_world.front_default,
+  };
+
   return (
     <Link href={`/pokemon/${pokemon.id}`}>
       <Card
@@ -18,7 +24,7 @@ const PokemonCard = ({ pokemon }) => {
         <Card.Img
           style={{ transform: "translate(0px, 20px)" }}
           variant="top"
-          src={pokemon.sprites.other.home.front_default}
+          src={pokemonArtwork.home}
         />
         <Card.Body>
           <Card.Text className="text-center fw-bold">

@@ -1,12 +1,17 @@
-import React, { useRef } from "react"; 
+import React, { useRef } from "react";
 import { useHovering } from "use-hovering";
 import { Button, Card, ListGroup, Badge } from "react-bootstrap";
 import Link from "next/link";
-import StatsList from "./StatsList"; 
+import StatsList from "./StatsList";
 
 const PokeDexEntry = ({ pokemon, description }) => {
   const ref = useRef();
-  const isHovering = useHovering(ref);  
+  const isHovering = useHovering(ref);
+  const pokemonArtwork = {
+    home: pokemon.sprites.other.home.front_default,
+    official: pokemon.sprites.other["official-artwork"].front_default,
+    dreamWorld: pokemon.sprites.other.dream_world.front_default,
+  };
 
   return (
     <div className="flex-container">
@@ -14,7 +19,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
         <Card>
           <Card.Img
             variant="top"
-            src={pokemon.sprites.other.home.front_default}
+            src={pokemonArtwork.official}
             className="pokemon-image"
           />
           <Card.Title className="text-center">
@@ -34,6 +39,14 @@ const PokeDexEntry = ({ pokemon, description }) => {
             <StatsList stats={pokemon.stats} />
             <div className="font-monospace">
               {description.replaceAll("\f", " ")}
+            </div>
+            <div>
+              {pokemon.abilities.map((x) => (
+                <p>{x.ability.name}</p>
+              ))}
+              {pokemon.forms.map((form) => (
+                <p>{form.name}</p>
+              ))}
             </div>
           </Card.Body>
         </Card>
