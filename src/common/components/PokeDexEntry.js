@@ -46,10 +46,12 @@ const PokeDexEntry = ({ pokemon, description }) => {
                 <li>{`Weight: ${pokemon.weight}`}</li>
                 <li>
                   Abilties:{" "}
-                  {pokemon.abilities.map((x) => (
+                  {pokemon.abilities.map((x, index) => (
                     <span>
-                      {`${x.ability.name[0].toUpperCase() +
-                      x.ability.name.substring(1)} `}
+                      {`${index ? ", " : ""}${
+                        x.ability.name[0].toUpperCase() +
+                        x.ability.name.substring(1)
+                      }`}
                     </span>
                   ))}
                 </li>
