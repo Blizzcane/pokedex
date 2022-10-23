@@ -47,7 +47,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
                 <li>
                   Abilties:{" "}
                   {pokemon.abilities.map((x, index) => (
-                    <span>
+                    <span key={index}>
                       {`${index ? ", " : ""}${
                         x.ability.name[0].toUpperCase() +
                         x.ability.name.substring(1)
