@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useHovering } from "use-hovering";
-import { Button, Card, ListGroup, Badge } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Link from "next/link";
 import StatsList from "./StatsList";
 
