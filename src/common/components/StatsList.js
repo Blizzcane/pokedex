@@ -11,7 +11,7 @@ const StatsList = ({ stats }) => {
     "secondary",
   ];
   return (
-    <ListGroup horizontal="md" className="my-2">
+    <ListGroup horizontal="lg" className="my-2">
       {stats &&
         stats.map((stat, idx) => (
           <ListGroup.Item
