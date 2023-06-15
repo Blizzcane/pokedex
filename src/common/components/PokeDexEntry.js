@@ -45,7 +45,7 @@ const PokeDexEntry = ({ pokemon, description }) => {
                 <li>{`Height: ${pokemon.height}`}</li>
                 <li>{`Weight: ${pokemon.weight}`}</li>
                 <li>
-                  Abilties:{" "}
+                  Abilities:{" "}
                   {pokemon.abilities.map((x, index) => (
                     <span key={index}>
                       {`${index ? ", " : ""}${
